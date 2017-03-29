@@ -25,7 +25,7 @@ subprocess.call('mv output.gif julia.gif', shell=True)
 
 
 fig = plt.figure()
-plt.plot(s.c_range, f.cpath(s.c_range), markevery=markers_on)
+plt.plot(s.c_range, f.cpath(s.c_range))
 fig.suptitle('Plot of the path of c through the complex plane')
 plt.xlabel('Real')
 plt.ylabel('Imaginary')
