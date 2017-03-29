@@ -16,19 +16,18 @@ for frame in xrange(s.num_frames):
 	c = complex(s.c_range[frame], f.cpath(s.c_range[frame]))
 	f.juliaeval(s.img_width, s.img_height, s.re_range, s.im_range, c, s.max_iterations, frame)
 
-'''
-fig = plt.figure()
-plt.plot(s.c_range, f.cpath(s.c_range))
-fig.suptitle('Plot of the path of c through the complex plane')
-plt.xlabel('Real')
-plt.ylabel('Imaginary')
-plt.show()
-fig.savefig('./images/figure.jpg')
-'''
-
 os.chdir('./images/')
 
 p = subprocess.call('bash makegif.sh', shell=True)
 
 subprocess.call('rm *.png', shell=True)
+subprocess.call('mv output.gif julia.gif', shell=True)
+
+
+fig = plt.figure()
+plt.plot(s.c_range, f.cpath(s.c_range), markevery=markers_on)
+fig.suptitle('Plot of the path of c through the complex plane')
+plt.xlabel('Real')
+plt.ylabel('Imaginary')
+fig.savefig('plot.png')
 
